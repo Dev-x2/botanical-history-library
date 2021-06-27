@@ -21,7 +21,7 @@ export class PageDetailsComponent {
     this.isOneRow = true;
   }
 
-  stopLoading(): void {
+  reload(): void {
     this.isLoading = !this.isLoading;
   }
 }

@@ -29,7 +29,7 @@ export class WelcomeComponent implements OnInit {
     this.isLoading = true;
 
     const pageData$ = this.pageDataService.getPageData(); // Need to unsubscribe
-    pageData$.subscribe((pageData) => {
+    pageData$.subscribe(pageData => {
       this.pages.push(pageData);
       this.isLoading = false;
       this.nzSpanValue = this.setNzSpanValue(this.pages.length);

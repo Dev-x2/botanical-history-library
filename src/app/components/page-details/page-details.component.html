@@ -12,8 +12,10 @@
 <ng-template #coverTemplate>
   <div
     *ngIf="isLoading"
-    style="display: flex; justify-content: center; align-items: center"
-    [ngClass]="isOneRow ? 'image-one-row ' : 'image-multi-rows'"
+    [ngClass]="[
+      'flex-center',
+      isOneRow ? 'image-one-row ' : 'image-multi-rows'
+    ]"
   >
     <nz-skeleton-element
       nzType="image"

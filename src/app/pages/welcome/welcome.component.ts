@@ -4,7 +4,8 @@ import { PageDataService } from '../../services/page-data.service';
 
 @Component({
   selector: 'app-welcome',
-  templateUrl: './welcome.component.html'
+  templateUrl: './welcome.component.html',
+  styleUrls: ['./welcome.component.less']
 })
 export class WelcomeComponent implements OnInit {
   pages: PageData[];

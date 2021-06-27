@@ -9,21 +9,7 @@ export interface PageData {
 @Component({
   selector: 'app-page-details',
   templateUrl: './page-details.component.html',
-  styles: [
-    `
-      .image-multi-rows {
-        max-width: 100%;
-        height: 250px;
-        object-fit: scale-down;
-      }
-
-      .image-one-row {
-        max-width: 100%;
-        height: 500px;
-        object-fit: scale-down;
-      }
-    `
-  ]
+  styleUrls: ['./page-details.component.less']
 })
 export class PageDetailsComponent {
   @Input() pageDetails!: PageData;

@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 export interface PageData {
   name: string;
@@ -22,10 +22,8 @@ export interface PageData {
         height: 500px;
         object-fit: scale-down;
       }
-
     `
   ]
-
 })
 export class PageDetailsComponent {
   @Input() pageDetails!: PageData;
@@ -37,17 +35,7 @@ export class PageDetailsComponent {
     this.isOneRow = true;
   }
 
-  ngOnChanges(changes: any) {
-
-    if(changes.pageDetails) {
-      this.isLoading = false;
-    }
-    
-    
-}
-
-  stopLoading(){
+  stopLoading(): void {
     this.isLoading = !this.isLoading;
   }
-
 }

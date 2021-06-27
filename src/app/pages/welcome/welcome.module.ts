@@ -19,12 +19,22 @@ import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 
-
-
 @NgModule({
-  imports: [WelcomeRoutingModule, NzCardModule, CommonModule, NzGridModule, NzDividerModule, NzIconModule, NzImageModule, NzButtonModule, 
-    NzLayoutModule, NzSkeletonModule, NzEmptyModule, NzSpinModule],
+  imports: [
+    WelcomeRoutingModule,
+    NzCardModule,
+    CommonModule,
+    NzGridModule,
+    NzDividerModule,
+    NzIconModule,
+    NzImageModule,
+    NzButtonModule,
+    NzLayoutModule,
+    NzSkeletonModule,
+    NzEmptyModule,
+    NzSpinModule
+  ],
   declarations: [WelcomeComponent, PageDetailsComponent],
   exports: [WelcomeComponent]
 })
-export class WelcomeModule { }
+export class WelcomeModule {}

@@ -1,26 +1,37 @@
-  <nz-card  nzHoverable [nzCover]="coverTemplate" [nzActions]="[actionEdit, actionDelete]" [nzLoading]="isLoading">
-    <nz-card-meta [nzTitle]="pageDetails.name" [nzDescription]="pageDetails.description"></nz-card-meta>
-  </nz-card>
-  <ng-template #coverTemplate>
+<nz-card
+  nzHoverable
+  [nzCover]="coverTemplate"
+  [nzActions]="[actionEdit, actionDelete]"
+  [nzLoading]="isLoading"
+>
+  <nz-card-meta
+    [nzTitle]="pageDetails.name"
+    [nzDescription]="pageDetails.description"
+  ></nz-card-meta>
+</nz-card>
+<ng-template #coverTemplate>
+  <div
+    *ngIf="isLoading"
+    style="display: flex; justify-content: center; align-items: center"
+    [ngClass]="isOneRow ? 'image-one-row ' : 'image-multi-rows'"
+  >
+    <nz-skeleton-element
+      nzType="image"
+      [nzActive]="isLoading"
+    ></nz-skeleton-element>
+  </div>
 
-
-    <div *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center;" [ngClass]="isOneRow? 'image-one-row ' : 'image-multi-rows'">
-      <nz-skeleton-element nzType="image" [nzActive]="isLoading"></nz-skeleton-element>
-    </div>
-
-          <img 
-          *ngIf="!isLoading"
-          nz-image
-          [ngClass]="isOneRow? 'image-one-row ' : 'image-multi-rows'"
-          [nzSrc]="pageDetails.imageLink"
-          alt=""
-          />
-
-
-  </ng-template>
-  <ng-template #actionDelete>
-    <i nz-icon nzType="delete"></i>
-  </ng-template>
-  <ng-template #actionEdit>
-    <i (click)="stopLoading()" nz-icon nzType="edit"></i>
-  </ng-template>
+  <img
+    *ngIf="!isLoading"
+    nz-image
+    [ngClass]="isOneRow ? 'image-one-row ' : 'image-multi-rows'"
+    [nzSrc]="pageDetails.imageLink"
+    alt=""
+  />
+</ng-template>
+<ng-template #actionDelete>
+  <i nz-icon nzType="delete"></i>
+</ng-template>
+<ng-template #actionEdit>
+  <i (click)="stopLoading()" nz-icon nzType="edit"></i>
+</ng-template>

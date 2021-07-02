@@ -39,4 +39,4 @@ import { NzBackTopModule } from 'ng-zorro-antd/back-top';
   declarations: [PageCollectionViewerComponent, PageDetailsComponent],
   exports: [PageCollectionViewerComponent]
 })
-export class WelcomeModule {}
+export class PageCollectionModule {}

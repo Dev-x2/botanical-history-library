@@ -18,6 +18,7 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { NzBackTopModule } from 'ng-zorro-antd/back-top';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
     NzLayoutModule,
     NzSkeletonModule,
     NzEmptyModule,
-    NzSpinModule
+    NzSpinModule,
+    NzBackTopModule
   ],
   declarations: [WelcomeComponent, PageDetailsComponent],
   exports: [WelcomeComponent]

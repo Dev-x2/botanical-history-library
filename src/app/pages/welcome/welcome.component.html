@@ -22,7 +22,7 @@
 
   <nz-divider nzOrientation="left" nzText="Collection"></nz-divider>
 
-  <div class="continer overflow" nz-row [nzGutter]="[32, 32]">
+  <div class="continer overflow" nz-row [nzGutter]="[32, 32]" #collection>
     <div *ngIf="pages.length < 1 && !isLoading" class="flex-center continer">
       <nz-empty></nz-empty>
     </div>
@@ -47,5 +47,6 @@
         [isOneRow]="pages.length < 5"
       ></app-page-details>
     </div>
+    <nz-back-top [nzTarget]="collection" nzVisibilityHeight="10"></nz-back-top>
   </div>
 </div>

@@ -30,16 +30,14 @@ export class PageDataService {
         '../../../assets/botanical-book-by-jacquin-1781-o1-historic-illustrations.jpg'
     };
 
-    this.counter = !this.counter;
+    const pageToSend = this.counter ? pageExample1 : pageExample2;
 
-    if (this.counter) {
-      of(pageExample1)
-        .pipe(delay(1000))
-        .subscribe((data: PageData) => {
-          this.store.dispatch(new AddPage(data));
-        });
-    } else {
-      this.store.dispatch(new AddPage(pageExample2));
-    }
+    of(pageToSend)
+      .pipe(delay(1200))
+      .subscribe((data: PageData) => {
+        this.store.dispatch(new AddPage(data));
+      });
+
+    this.counter = !this.counter;
   }
 }

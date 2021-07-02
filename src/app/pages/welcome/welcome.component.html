@@ -23,15 +23,24 @@
   <nz-divider nzOrientation="left" nzText="Collection"></nz-divider>
 
   <div class="continer overflow" nz-row [nzGutter]="[32, 32]">
-    <div *ngIf="pages.length < 1" class="flex-center continer">
+    <div *ngIf="pages.length < 1 && !isLoading" class="flex-center continer">
       <nz-empty></nz-empty>
     </div>
+
+    <nz-spin
+      *ngIf="isLoading"
+      class="loading-spinner"
+      nzSimple
+      nzSize="large"
+      nzTip="Loading..."
+    ></nz-spin>
 
     <div
       *ngFor="let page of pages"
       nz-col
       class="gutter-row"
       [nzSpan]="nzSpanValue"
+      [ngStyle]="{ opacity: isLoading ? '0.3' : '1' }"
     >
       <app-page-details
         [pageDetails]="page"

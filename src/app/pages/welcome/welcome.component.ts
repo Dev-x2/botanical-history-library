@@ -40,6 +40,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
   }
 
   getPageDetails(): void {
+    this.isLoading = true; // Todo need to handle if fetch is failed the loading will reamin true
     this.pageDataService.fetchPageData();
   }
 

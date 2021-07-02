@@ -22,9 +22,9 @@ export class PageDetailsComponent {
   }
 
   reload(): void {
-    if(!this.isLoading){
+    if (!this.isLoading) {
       this.isLoading = true;
-      setTimeout(()=>{
+      setTimeout(() => {
         this.isLoading = false;
       }, 1500);
     }

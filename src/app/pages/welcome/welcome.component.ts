@@ -1,4 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Store } from '@ngxs/store';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { ClearAllPages } from 'src/app/services/app.actions';
 import { PageData } from '../../components/page-details/page-details.component';
 import { PageDataService } from '../../services/page-data.service';
 
@@ -7,34 +11,36 @@ import { PageDataService } from '../../services/page-data.service';
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.less']
 })
-export class WelcomeComponent implements OnInit {
-  pages: PageData[];
-  nzSpanValue: number;
-  isLoading: boolean;
+export class WelcomeComponent implements OnInit, OnDestroy {
+  pages: PageData[] = [];
+  nzSpanValue = 0;
+  isLoading = true;
+  destroy$ = new Subject<void>();
 
-  constructor(private pageDataService: PageDataService) {
-    this.pages = [];
-    this.nzSpanValue = this.setNzSpanValue(this.pages.length);
-    this.isLoading = false;
-  }
+  constructor(private pageDataService: PageDataService, private store: Store) {}
 
   ngOnInit(): void {
-    // this.getPageDetails();
+    this.store
+      .select(state => state.app.pages)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(data => {
+        this.pages = data;
+        this.nzSpanValue = this.setNzSpanValue(this.pages.length);
+        this.isLoading = false;
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   clearAllPages(): void {
-    this.pages = [];
+    this.store.dispatch(new ClearAllPages());
   }
 
   getPageDetails(): void {
-    this.isLoading = true;
-
-    const pageData$ = this.pageDataService.getPageData(); // Need to unsubscribe
-    pageData$.subscribe(pageData => {
-      this.pages.push(pageData);
-      this.isLoading = false;
-      this.nzSpanValue = this.setNzSpanValue(this.pages.length);
-    });
+    this.pageDataService.fetchPageData();
   }
 
   private setNzSpanValue(numberOfPages: number): number {

@@ -13,8 +13,8 @@ const routes: Routes = [
   {
     path: 'newpage',
     loadChildren: () =>
-      import('./pages/page-collection-viewer/page-collection.module').then(
-        m => m.PageCollectionModule
+      import('./pages/new-page-editor/new-page-editor.module').then(
+        m => m.NewPageEditorModule
       )
   }
 ];

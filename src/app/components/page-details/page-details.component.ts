@@ -17,11 +17,16 @@ export class PageDetailsComponent {
   isLoading: boolean;
 
   constructor() {
-    this.isLoading = true;
+    this.isLoading = false;
     this.isOneRow = true;
   }
 
   reload(): void {
-    this.isLoading = !this.isLoading;
+    if(!this.isLoading){
+      this.isLoading = true;
+      setTimeout(()=>{
+        this.isLoading = false;
+      }, 1500);
+    }
   }
 }

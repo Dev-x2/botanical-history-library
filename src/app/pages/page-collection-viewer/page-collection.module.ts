@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 
-import { WelcomeRoutingModule } from './welcome-routing.module';
+import { PageCollectionRoutingModule } from './page-collection-routing.module';
 
-import { WelcomeComponent } from './welcome.component';
+import { PageCollectionViewerComponent } from './page-collection-viewer.component';
 
 import { PageDetailsComponent } from '../../components/page-details/page-details.component';
 import { NzCardModule } from 'ng-zorro-antd/card';
@@ -22,7 +22,7 @@ import { NzBackTopModule } from 'ng-zorro-antd/back-top';
 
 @NgModule({
   imports: [
-    WelcomeRoutingModule,
+    PageCollectionRoutingModule,
     NzCardModule,
     CommonModule,
     NzGridModule,
@@ -36,7 +36,7 @@ import { NzBackTopModule } from 'ng-zorro-antd/back-top';
     NzSpinModule,
     NzBackTopModule
   ],
-  declarations: [WelcomeComponent, PageDetailsComponent],
-  exports: [WelcomeComponent]
+  declarations: [PageCollectionViewerComponent, PageDetailsComponent],
+  exports: [PageCollectionViewerComponent]
 })
 export class WelcomeModule {}

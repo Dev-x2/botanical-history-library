@@ -7,11 +7,10 @@ import { PageData } from '../../components/page-details/page-details.component';
 import { PageDataService } from '../../services/page-data.service';
 
 @Component({
-  selector: 'app-welcome',
-  templateUrl: './welcome.component.html',
-  styleUrls: ['./welcome.component.less']
+  templateUrl: './page-collection-viewer.component.html',
+  styleUrls: ['./page-collection-viewer.component.less']
 })
-export class WelcomeComponent implements OnInit, OnDestroy {
+export class PageCollectionViewerComponent implements OnInit, OnDestroy {
   pages: PageData[] = [];
   nzSpanValue = 0;
   isLoading = true;

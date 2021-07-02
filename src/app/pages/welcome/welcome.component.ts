@@ -45,7 +45,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
   }
 
   private setNzSpanValue(numberOfPages: number): number {
-    const oneColumn = 12;
+    const oneColumn = 24;
     const twoColumns = 12;
     const threeColumns = 8;
     const fourColumns = 6;

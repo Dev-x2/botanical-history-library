@@ -16,7 +16,8 @@ describe('App store', () => {
   );
 
   it('should create an action and add an item', () => {
-    const data: PageData = {
+    const pageData: PageData = {
+      id: Date.now(),
       name: 'test',
       description: 'example check 1',
       imageLink:
@@ -24,9 +25,9 @@ describe('App store', () => {
     };
 
     const expected: AppStateModel = {
-      pages: [data]
+      pages: [pageData]
     };
-    store.dispatch(new AddPage(data));
+    store.dispatch(new AddPage(pageData));
     const actual = store.selectSnapshot(AppState.getState);
     expect(actual).toEqual(expected);
   });

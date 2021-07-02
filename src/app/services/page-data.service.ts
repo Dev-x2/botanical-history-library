@@ -15,6 +15,7 @@ export class PageDataService {
 
   public fetchPageData(): void {
     const pageExample1: PageData = {
+      id: Date.now(),
       name: 'test',
       description: 'example check 1',
       imageLink:
@@ -22,6 +23,7 @@ export class PageDataService {
     };
 
     const pageExample2: PageData = {
+      id: Date.now(),
       name: 'This is example',
       description: 'example check 2',
       imageLink:

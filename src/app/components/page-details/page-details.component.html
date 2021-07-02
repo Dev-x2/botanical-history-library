@@ -32,7 +32,7 @@
   />
 </ng-template>
 <ng-template #actionDelete>
-  <i nz-icon nzType="delete"></i>
+  <i (click)="delete()" nz-icon nzType="delete"></i>
 </ng-template>
 <ng-template #actionEdit>
   <i (click)="reload()" nz-icon nzType="reload"></i>

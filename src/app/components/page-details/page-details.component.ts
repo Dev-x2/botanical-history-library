@@ -1,6 +1,9 @@
 import { Component, Input } from '@angular/core';
+import { Store } from '@ngxs/store';
+import { DeletePage } from 'src/app/services/app.actions';
 
 export interface PageData {
+  id: number;
   name: string;
   description: string;
   imageLink: string;
@@ -13,12 +16,13 @@ export interface PageData {
 })
 export class PageDetailsComponent {
   @Input() pageDetails!: PageData;
-  @Input() isOneRow: boolean;
-  isLoading: boolean;
+  @Input() isOneRow = true;
+  isLoading = false;
 
-  constructor() {
-    this.isLoading = false;
-    this.isOneRow = true;
+  constructor(private store: Store) {}
+
+  delete(): void {
+    this.store.dispatch(new DeletePage(this.pageDetails.id));
   }
 
   reload(): void {

@@ -1,6 +1,7 @@
 import { State, Action, Selector, StateContext } from '@ngxs/store';
 import { PageData } from '../components/page-details/page-details.component';
-import { AddPage, ClearAllPages } from './app.actions';
+import { AddPage, ClearAllPages, DeletePage } from './app.actions';
+import { patch, removeItem } from '@ngxs/store/operators';
 
 export interface AppStateModel {
   pages: PageData[];
@@ -21,13 +22,24 @@ export class AppState {
   @Action(AddPage)
   public add(ctx: StateContext<AppStateModel>, { payload }: AddPage): void {
     const stateModel = ctx.getState();
-    // Todo: Check if should be replaced with patchState
     stateModel.pages = [...stateModel.pages, payload];
     ctx.setState(stateModel);
   }
 
+  @Action(DeletePage)
+  public delete(
+    ctx: StateContext<AppStateModel>,
+    { pageId }: DeletePage
+  ): void {
+    ctx.setState(
+      patch({
+        pages: removeItem<PageData>(page => page?.id === pageId)
+      })
+    );
+  }
+
   @Action(ClearAllPages)
-  public clearAll(ctx: StateContext<AppStateModel>): void {
+  public deleteAll(ctx: StateContext<AppStateModel>): void {
     const stateModel = ctx.getState();
     stateModel.pages = [];
     ctx.setState(stateModel);

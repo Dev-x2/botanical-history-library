@@ -15,6 +15,7 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NgxsModule } from '@ngxs/store';
 import { AppState } from './services/app.state';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 
 registerLocaleData(en);
 
@@ -29,6 +30,8 @@ registerLocaleData(en);
     IconsProviderModule,
     NzLayoutModule,
     NzMenuModule,
+    NgxsModule.forRoot([]),
+    NgxsReduxDevtoolsPluginModule.forRoot({ disabled: false }),
     NgxsModule.forRoot([AppState])
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],

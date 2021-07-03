@@ -4,6 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port=3000 --open",
+    "create-docker-image": "docker build -t botanical-lib .",
+    "run-docker": "docker run --rm -it -p 8080:8080  botanical-lib",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint --fix=true && npx prettier --write .",

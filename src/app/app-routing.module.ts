@@ -16,7 +16,8 @@ const routes: Routes = [
       import('./pages/new-page-editor/new-page-editor.module').then(
         m => m.NewPageEditorModule
       )
-  }
+  },
+  { path: '**', redirectTo: '/collection' }
 ];
 
 @NgModule({

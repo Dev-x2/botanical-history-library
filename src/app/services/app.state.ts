@@ -22,7 +22,7 @@ export class AppState {
   @Action(AddPage)
   public add(ctx: StateContext<AppStateModel>, { payload }: AddPage): void {
     const stateModel = ctx.getState();
-    stateModel.pages = [...stateModel.pages, payload];
+    stateModel.pages = [...stateModel.pages, ...payload];
     ctx.setState(stateModel);
   }
 

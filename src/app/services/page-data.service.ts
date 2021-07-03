@@ -11,33 +11,130 @@ import { Store } from '@ngxs/store';
 export class PageDataService {
   constructor(private store: Store) {}
 
-  counter = true;
+  counter = 0;
+
+  private pagesArchive: PageData[] = [
+    {
+      id: Date.now(),
+      name: 'Pietro Andrea Mattioli - 1561 - Page 11',
+      description:
+        'I discorsi di P. A. Mattioli. Excellence in art and science in the 16th century. Ediz. multilingue, Example 1.',
+      imageLink: '../../../assets/image1.jpg'
+    },
+
+    {
+      id: Date.now(),
+      name: 'Pietro Andrea Mattioli - 1561 - Page 272',
+      description:
+        'A careful student of botany, he described 100 new plants and coordinated the medical botany of his time.',
+      imageLink: '../../../assets/image2.jpg'
+    },
+    {
+      id: Date.now(),
+      name: 'Luca Ghini (1490–1556)',
+      description:
+        'Botany, also called plant science(s), plant biology or phytology, is the science of plant life and a branch biology.',
+      imageLink: '../../../assets/image10.jpg'
+    },
+
+    {
+      id: Date.now(),
+      name: 'Second Edition - 1561 - Page 248',
+      description:
+        'In addition to identifying the plants originally described by Dioscorides, Mattioli added descriptions of some plants.',
+      imageLink: '../../../assets/image8.jpg'
+    },
+
+    {
+      id: Date.now(),
+      name: 'Title section....',
+      description: 'Description section...',
+      imageLink: '../../../assets/image12.jpg'
+    },
+
+    {
+      id: Date.now(),
+      name: 'Title section....',
+      description: 'Description section...',
+      imageLink: '../../../assets/image6.jpg'
+    },
+
+    {
+      id: Date.now(),
+      name: 'Title section....',
+      description: 'Description section...',
+      imageLink: '../../../assets/image7.jpg'
+    },
+
+    {
+      id: Date.now(),
+      name: 'Title section....',
+      description: 'Description section...',
+      imageLink: '../../../assets/image4.jpg'
+    },
+
+    {
+      id: Date.now(),
+      name: 'Title section....',
+      description: 'Description section...',
+      imageLink: '../../../assets/image9.jpg'
+    },
+
+    {
+      id: Date.now(),
+      name: 'Title section....',
+      description: 'Description section...',
+      imageLink: '../../../assets/image3.jpg'
+    },
+
+    {
+      id: Date.now(),
+      name: 'Title section....',
+      description: 'Description section...',
+      imageLink: '../../../assets/image11.jpg'
+    },
+
+    {
+      id: Date.now(),
+      name: 'Title section....',
+      description: 'Description section...',
+      imageLink: '../../../assets/image5.jpg'
+    },
+
+    {
+      id: Date.now(),
+      name: 'Title section....',
+      description: 'Description section...',
+      imageLink: '../../../assets/image13.jpg'
+    },
+
+    {
+      id: Date.now(),
+      name: 'Title section....',
+      description: 'Description section...',
+      imageLink: '../../../assets/image14.jpg'
+    }
+  ];
 
   public fetchPageData(): void {
-    const pageExample1: PageData = {
-      id: Date.now(),
-      name: 'test',
-      description: 'example check 1',
-      imageLink:
-        '../../../assets/vintage-vector-botanical-illustration-set-260nw-1531681373.jpg'
-    };
-
-    const pageExample2: PageData = {
-      id: Date.now(),
-      name: 'This is example',
-      description: 'example check 2',
-      imageLink:
-        '../../../assets/botanical-book-by-jacquin-1781-o1-historic-illustrations.jpg'
-    };
-
-    const pageToSend = this.counter ? pageExample1 : pageExample2;
-
-    of(pageToSend)
+    of(this.pagesArchive[this.counter])
       .pipe(delay(1200))
       .subscribe((data: PageData) => {
-        this.store.dispatch(new AddPage(data));
+        this.store.dispatch(new AddPage([data]));
       });
 
-    this.counter = !this.counter;
+    this.counter++;
+
+    if (this.counter === this.pagesArchive.length) {
+      this.counter = 0;
+    }
+  }
+
+  public fetchAllPages(): void {
+    of(this.pagesArchive[this.counter])
+      .pipe(delay(1200))
+      .subscribe((data: PageData) => {
+        this.store.dispatch(new AddPage(this.pagesArchive));
+      });
   }
 }

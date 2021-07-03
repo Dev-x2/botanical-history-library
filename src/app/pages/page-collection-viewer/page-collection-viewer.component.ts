@@ -43,6 +43,11 @@ export class PageCollectionViewerComponent implements OnInit, OnDestroy {
     this.pageDataService.fetchPageData();
   }
 
+  getFullCollection(): void {
+    this.isLoading = true;
+    this.pageDataService.fetchAllPages();
+  }
+
   private setNzSpanValue(numberOfPages: number): number {
     const oneColumn = 24;
     const twoColumns = 12;

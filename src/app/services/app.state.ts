@@ -1,16 +1,23 @@
 import { State, Action, Selector, StateContext } from '@ngxs/store';
 import { PageData } from '../components/page-details/page-details.component';
-import { AddPage, ClearAllPages, DeletePage } from './app.actions';
+import {
+  AddPage,
+  ClearAllPages,
+  DeletePage,
+  SetPageCounter
+} from './app.actions';
 import { patch, removeItem } from '@ngxs/store/operators';
 
 export interface AppStateModel {
   pages: PageData[];
+  pageCounter: number;
 }
 
 @State<AppStateModel>({
   name: 'app',
   defaults: {
-    pages: []
+    pages: [],
+    pageCounter: 0
   }
 })
 export class AppState {
@@ -43,5 +50,13 @@ export class AppState {
     const stateModel = ctx.getState();
     stateModel.pages = [];
     ctx.setState(stateModel);
+  }
+
+  @Action(SetPageCounter)
+  public set(
+    { patchState }: StateContext<AppStateModel>,
+    { counter }: SetPageCounter
+  ): void {
+    patchState({ pageCounter: counter });
   }
 }

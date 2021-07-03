@@ -22,6 +22,7 @@
     "@ngxs/devtools-plugin": "^3.3.2",
     "@ngxs/logger-plugin": "^3.3.2",
     "@ngxs/schematics": "0.0.1-alpha.5",
+    "@ngxs/storage-plugin": "^3.7.2",
     "@ngxs/store": "^3.3.2",
     "ng-zorro-antd": "^11.4.2",
     "rxjs": "~6.6.0",

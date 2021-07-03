@@ -14,3 +14,8 @@ export class ClearAllPages {
   public static readonly type = '[App] Clear all pages';
   constructor() {}
 }
+
+export class SetPageCounter {
+  public static readonly type = '[App] Set Page Counter';
+  constructor(public counter: number) {}
+}

@@ -16,6 +16,7 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NgxsModule } from '@ngxs/store';
 import { AppState } from './services/app.state';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsStoragePluginModule, StorageOption } from '@ngxs/storage-plugin';
 
 registerLocaleData(en);
 
@@ -31,6 +32,7 @@ registerLocaleData(en);
     NzLayoutModule,
     NzMenuModule,
     NgxsModule.forRoot([]),
+    NgxsStoragePluginModule.forRoot({ storage: StorageOption.SessionStorage }),
     NgxsReduxDevtoolsPluginModule.forRoot({ disabled: false }),
     NgxsModule.forRoot([AppState])
   ],

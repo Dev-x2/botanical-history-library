@@ -1,17 +1,24 @@
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { PageData } from '../components/page-details/page-details.component';
-import { delay } from 'rxjs/operators';
-import { AddPage } from './app.actions';
+import { delay, take } from 'rxjs/operators';
+import { AddPage, SetPageCounter } from './app.actions';
 import { Store } from '@ngxs/store';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PageDataService {
-  constructor(private store: Store) {}
-
   counter = 0;
+
+  constructor(private store: Store) {
+    this.store
+      .select(state => state.app.pageCounter)
+      .pipe(take(1))
+      .subscribe(data => {
+        this.counter = data;
+      });
+  }
 
   private pagesArchive: PageData[] = [
     {
@@ -128,6 +135,7 @@ export class PageDataService {
     if (this.counter === this.pagesArchive.length) {
       this.counter = 0;
     }
+    this.store.dispatch(new SetPageCounter(this.counter));
   }
 
   public fetchAllPages(): void {
